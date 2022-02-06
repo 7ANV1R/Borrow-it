@@ -25,5 +25,16 @@ router.get("/", (req, res) => {
  });
 });
 
+router.get("/:id", (req, res) => {
+ const id = req.params.id
+ Product.findById(id).exec( (err, data) => {
+  if (err) {
+   res.status(500).send(err);
+  } else {
+   res.status(201).send(data);
+  }
+ });
+});
+
 
 export default router;
